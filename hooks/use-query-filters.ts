@@ -11,7 +11,7 @@ export const useQueryFilters = (filters: Filters) => {
       ...filters.price,
       pizzaTypes: Array.from(filters.pizzaTypes),
       sizes: Array.from(filters.sizes),
-      selectedIds: Array.from(filters.selectedIngerdients),
+      ingredients: Array.from(filters.selectedIngerdients),
     };
 
     const query = qs.stringify(params, {
@@ -21,5 +21,11 @@ export const useQueryFilters = (filters: Filters) => {
     router.push(`?${query}`, {
       scroll: false,
     });
-  }, [filters, router]);
+  }, [
+    filters.pizzaTypes,
+    filters.price,
+    filters.sizes,
+    filters.selectedIngerdients,
+    router,
+  ]);
 };
