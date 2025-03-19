@@ -41,7 +41,7 @@ const ProdutsGroupList = ({
       <div ref={intersectionRef} className={cn('grid grid-cols-3 gap-[50px]', listClassName)}>
         {products
           .filter((product) => product.items.length > 0)
-          .map((product, i) => (
+          .map((product) => (
             <ProductCard
               key={product.id}
               id={product.id}
