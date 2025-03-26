@@ -1,8 +1,8 @@
-import { Container } from "@/components/shared/container";
-import Filters from "@/components/shared/filters";
-import ProdutsGroupList from "@/components/shared/products-group-list";
-import { Title } from "@/components/shared/title";
-import TopBar from "@/components/shared/top-bar";
+import { Container } from "@/shared/components/shared/container";
+import Filters from "@/shared/components/shared/filters";
+import ProdutsGroupList from "@/shared/components/shared/products-group-list";
+import { Title } from "@/shared/components/shared/title";
+import TopBar from "@/shared/components/shared/top-bar";
 import { prisma } from "@/prisma/prisma-client";
 
 export default async function Home() {
@@ -44,5 +44,5 @@ export default async function Home() {
     </>
   );
 }
-// 7.36.00
+// 9.14.00
 // docker run --name dbuser -p 5432:5432 -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=1234 -d postgres собирает контейнер

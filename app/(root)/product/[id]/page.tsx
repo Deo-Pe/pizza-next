@@ -1,10 +1,10 @@
-import { Container } from '@/components/shared/container'
+import { Container } from '@/shared/components/shared/container'
 import { prisma } from '@/prisma/prisma-client'
 import { notFound } from 'next/navigation'
 import React from 'react'
-import ProductImage from '@/components/shared/product-image'
-import { Title } from '@/components/shared/title'
-import { GroupVariants } from '@/components/shared/group-variants'
+import ProductImage from '@/shared/components/shared/pizza-image'
+import { Title } from '@/shared/components/shared/title'
+import { GroupVariants } from '@/shared/components/shared/group-variants'
 
 export default async function ProductPage({ params: { id } }: { params: { id: string } }) {
   const product = await prisma.product.findFirst({ where: { id: Number(id) } })
