@@ -6,6 +6,7 @@ import { cn } from '@/shared/lib/utils'
 import { useRouter } from 'next/navigation'
 import ChooseProductForm from '../choose-product-form'
 import ChoosePizzaForm from '../choose-pizza-form'
+import { DialogTitle } from '@radix-ui/react-dialog'
 
 type Props = {
   className?: string;
@@ -19,8 +20,8 @@ export const ChooseProductModal = ({ product, className }: Props) => {
     <Dialog open={Boolean(product)} onOpenChange={() => router.back()}>
       <DialogContent className={cn('p-0 max-w-[1060px] min-h-[500px] bg-white overflow-hidden', className)}>
         {
-          isPizzaForm ? <ChoosePizzaForm imageUrl={product.imageUrl} name={product.name} ingredients={[]} /> :
-            <ChooseProductForm imageUrl={product.imageUrl} name={product.name} />
+          isPizzaForm ? (<DialogTitle><ChoosePizzaForm imageUrl={product.imageUrl} name={product.name} ingredients={product.ingredient} items={product.items} /></DialogTitle>) :
+            (<DialogTitle><ChooseProductForm imageUrl={product.imageUrl} name={product.name} /></DialogTitle>)
         }
       </DialogContent>
     </Dialog>

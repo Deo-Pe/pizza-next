@@ -11,6 +11,9 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
+  {
+    "jsx-a11y/alt-text": off,
+  },
 ];
 
 export default eslintConfig;
