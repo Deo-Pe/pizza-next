@@ -1,7 +1,7 @@
 interface Post {
-	id: string;
-	title: string;
-	content: string;
+  id: string;
+  title: string;
+  content: string;
 }
 
 // Next.js will invalidate the cache when a
@@ -14,27 +14,27 @@ export const revalidate = 60;
 export const dynamicParams = true; // or false, to 404 on unknown paths
 
 export async function generateStaticParams() {
-	const posts: Post[] = await fetch("https://api.vercel.app/blog").then((res) =>
-		res.json()
-	);
-	return posts.map((post) => ({
-		id: String(post.id),
-	}));
+  const posts: Post[] = await fetch("https://api.vercel.app/blog").then((res) =>
+    res.json(),
+  );
+  return posts.map((post) => ({
+    id: String(post.id),
+  }));
 }
 
 export default async function Page({
-	params,
+  params,
 }: {
-	params: Promise<{ id: string }>;
+  params: Promise<{ id: string }>;
 }) {
-	const id = (await params).id;
-	const post: Post = await fetch(`https://api.vercel.app/blog/${id}`).then(
-		(res) => res.json()
-	);
-	return (
-		<main>
-			<h1>{post.title}</h1>
-			<p>{post.content}</p>
-		</main>
-	);
+  const id = (await params).id;
+  const post: Post = await fetch(`https://api.vercel.app/blog/${id}`).then(
+    (res) => res.json(),
+  );
+  return (
+    <main>
+      <h1>{post.title}</h1>
+      <p>{post.content}</p>
+    </main>
+  );
 }
