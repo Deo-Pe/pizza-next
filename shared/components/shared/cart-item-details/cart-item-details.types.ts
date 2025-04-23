@@ -3,5 +3,6 @@ export interface CartItemProps {
   name: string;
   price: number;
   quantity: number;
-  className?: string;
+  id: number;
+  details: string;
 }
