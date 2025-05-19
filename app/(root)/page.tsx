@@ -11,17 +11,21 @@ export default async function Home() {
       products: {
         include: {
           ingredient: true,
-          items: true
-        }
-      }
-    }
-  })
+          items: true,
+        },
+      },
+    },
+  });
   return (
     <>
       <Container className="mt-10">
         <Title text="Все пиццы" size="lg" className="font-extrabold"></Title>
       </Container>
-      <TopBar categories={categories.filter(category => category.products.length > 0)} />
+      <TopBar
+        categories={categories.filter(
+          (category) => category.products.length > 0,
+        )}
+      />
       <Container className="mt-10 pb-14">
         <div className="flex gap-[80px]">
           <div className="w-[250px]">
@@ -29,7 +33,7 @@ export default async function Home() {
           </div>
           <div className="flex-1">
             <div className="flex flex-col gap-16">
-              {categories.map(category => (
+              {categories.map((category) => (
                 <ProdutsGroupList
                   key={category.id}
                   title={category.name}
@@ -44,5 +48,5 @@ export default async function Home() {
     </>
   );
 }
-// 11.00.44
+// 12.16.44
 // docker run --name dbuser -p 5432:5432 -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=1234 -d postgres собирает контейнер
