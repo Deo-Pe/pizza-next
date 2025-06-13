@@ -1,5 +1,6 @@
 import { Nunito } from "next/font/google";
 import "./globals.css";
+import { Toaster } from 'react-hot-toast'
 
 const geistSans = Nunito({
   subsets: ["cyrillic"],
@@ -19,6 +20,7 @@ export default function RootLayout({
       </head>
       <body className={geistSans.variable}>
         {children}
+        <Toaster />
       </body>
     </html>
   );

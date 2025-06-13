@@ -3,19 +3,11 @@ import Filters from "@/shared/components/shared/filters";
 import ProdutsGroupList from "@/shared/components/shared/products-group-list";
 import { Title } from "@/shared/components/shared/title";
 import TopBar from "@/shared/components/shared/top-bar";
-import { prisma } from "@/prisma/prisma-client";
+import { Suspense } from "react";
+import { findPizzas, GetSearchParams } from "@/shared/lib/find-pizzas";
 
-export default async function Home() {
-  const categories = await prisma.category.findMany({
-    include: {
-      products: {
-        include: {
-          ingredient: true,
-          items: true,
-        },
-      },
-    },
-  });
+export default async function Home({ searchParams }: { searchParams: GetSearchParams }) {
+  const categories = await findPizzas(searchParams)
   return (
     <>
       <Container className="mt-10">
@@ -29,7 +21,7 @@ export default async function Home() {
       <Container className="mt-10 pb-14">
         <div className="flex gap-[80px]">
           <div className="w-[250px]">
-            <Filters />
+            <Suspense><Filters /></Suspense>
           </div>
           <div className="flex-1">
             <div className="flex flex-col gap-16">
@@ -48,5 +40,5 @@ export default async function Home() {
     </>
   );
 }
-// 12.16.44
+// 13.42.44
 // docker run --name dbuser -p 5432:5432 -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=1234 -d postgres собирает контейнер
