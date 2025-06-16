@@ -1,7 +1,7 @@
 
 interface Props {
   name: string;
-  details: string
+  details: string | undefined
 }
 
 export const CartItemInfo: React.FC<Props> = ({ name, details }) => {

@@ -40,5 +40,5 @@ export default async function Home({ searchParams }: { searchParams: GetSearchPa
     </>
   );
 }
-// 13.42.44
+// 15.30.25
 // docker run --name dbuser -p 5432:5432 -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=1234 -d postgres собирает контейнер
