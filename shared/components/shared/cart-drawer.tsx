@@ -14,11 +14,11 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import CartDrawerItem from "./cart-drawer-item";
 import { getCartItemDetails } from "@/shared/lib/get-cart-item-details";
-import { useCartStore } from "@/shared/store/cart";
 import { PizzaSize, PizzaType } from "@/shared/constants/pizzz";
 import Image from "next/image";
 import { Title } from "./title";
 import { cn } from "@/shared/lib/utils";
+import { useCart } from "@/shared/hooks/use-cart";
 
 type Props = {
   className?: string;
@@ -28,22 +28,8 @@ const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({
   children,
   className,
 }) => {
-  // const [totalAmount, fetchCartItems, items] = useCartStore((state) => [
-  //   state.totalAmount,
-  //   state.fetchCartItems,
-  //   state.items,
-  // ]);
-  const {
-    totalAmount,
-    fetchCartItems,
-    removeCartItem,
-    updateItemQuantity,
-    items,
-  } = useCartStore();
 
-  React.useEffect(() => {
-    fetchCartItems();
-  }, []);
+  const { totalAmount, updateItemQuantity, items, removeCartItem } = useCart()
 
   const onClickCountButton = (
     id: number,
