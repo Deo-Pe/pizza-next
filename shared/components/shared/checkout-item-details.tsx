@@ -3,7 +3,8 @@ import React from 'react'
 
 type Props = {
 	title?: React.ReactNode
-	value?: number
+	// value?: number
+	value?: string | number
 	className?: string
 }
 
