@@ -19,7 +19,7 @@ export const FormInput: React.FC<Props> = ({ className, name, label, required, .
 	const error = errors[name]?.message as string
 
 	const onClickClear = () => {
-		setValue(name, '')
+		setValue(name, '', { shouldValidate: true })
 	}
 
 	return (

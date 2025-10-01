@@ -4,18 +4,24 @@ import { CheckoutItem } from '../checkout-item'
 import { getCartItemDetails } from '@/shared/lib/get-cart-item-details'
 import { PizzaSize, PizzaType } from '@/shared/constants/pizzz'
 import { CartStateItem } from '@/shared/services/get-cart-details'
+import { Skeleton } from '../../ui/skeleton'
+import { CheckoutItemSkeleton } from '../checkout-item-skeleton'
 
 type Props = {
 	items: CartStateItem[]
 	onClickCountButton: (id: number, quantity: number, type: 'plus' | 'minus') => void
 	removeCartItem: (id: number) => void
 	className?: string
+	loading?: boolean
 }
 
-const CheckoutCart = ({ items, onClickCountButton, removeCartItem, className }: Props) => {
+const CheckoutCart = ({ items, onClickCountButton, removeCartItem, loading, className }: Props) => {
 	return (
 		<WhiteBlock title="1. Корзина" className={className}>
 			<div className="flex flex-col gap-5">
+				{
+					loading && [...Array(4)].map((_, index) => <CheckoutItemSkeleton key={index} />)
+				}
 				{
 					items.map(item => (
 						<CheckoutItem
