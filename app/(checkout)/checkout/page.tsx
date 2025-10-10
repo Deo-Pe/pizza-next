@@ -9,9 +9,14 @@ import CheckoutPersonalForm from "@/shared/components/shared/checkout/chekout-pe
 import CheckoutAddressForm from "@/shared/components/shared/checkout/checkout-address-form";
 import { checkoutFormSchema, CheckoutFormValues } from "@/shared/components/shared/checkout/checkout-form-schema";
 import { zodResolver } from '@hookform/resolvers/zod';
+import { createOrder } from "@/app/ations";
+import toast from "react-hot-toast";
+import { useState } from "react";
 
 export default function CheckoutPage() {
 
+	const [submit, setSubmit] = useState(false)
+	const { totalAmount, updateItemQuantity, items, removeCartItem, loading } = useCart()
 	const form = useForm<CheckoutFormValues>({
 		resolver: zodResolver(checkoutFormSchema),
 		defaultValues: {
@@ -24,10 +29,26 @@ export default function CheckoutPage() {
 		}
 	})
 
-	const { totalAmount, updateItemQuantity, items, removeCartItem, loading } = useCart()
 
-	const onSubmit: SubmitHandler<CheckoutFormValues> = data => {
-		console.log(data);
+	const onSubmit: SubmitHandler<CheckoutFormValues> = async (data) => {
+		try {
+			setSubmit(true)
+			const url = await createOrder(data);
+
+			toast.error('Заказ успешно оформлен! Переход на оплату...', {
+				icon: '✅',
+			})
+
+			if (url) {
+				location.href = url
+			}
+		} catch (error) {
+			console.log(error);
+			setSubmit(false)
+			toast.error('Не удалось создать заказ!', {
+				icon: '⛔',
+			})
+		}
 
 	}
 
@@ -52,7 +73,7 @@ export default function CheckoutPage() {
 						<CheckoutAddressForm className={loading ? 'opacity-40 pointer-events-none' : ''} />
 					</div>
 					<div className="w-[450px]">
-						<CheckoutSidebar totalAmount={totalAmount} loading={loading} />
+						<CheckoutSidebar totalAmount={totalAmount} loading={loading || submit} />
 					</div>
 				</div>
 			</form>

@@ -1,13 +1,12 @@
 import { Nunito } from "next/font/google";
 import "./globals.css";
-import { Toaster } from 'react-hot-toast'
+import { Toaster } from "react-hot-toast";
 
 const geistSans = Nunito({
   subsets: ["cyrillic"],
   variable: "--font-nunito",
   weight: ["400", "500", "600", "700", "800", "900"],
 });
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -16,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link data-rh="true" rel='icon' href="/logo.png" />
+        <link data-rh="true" rel="icon" href="/logo.png" />
       </head>
       <body className={geistSans.variable}>
         {children}
