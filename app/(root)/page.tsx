@@ -48,6 +48,6 @@ export default async function Home({
     </>
   );
 }
-// 19.04.23
+// 19.45.23
 // docker run --name dbuser -p 5432:5432 -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=1234 -d postgres собирает контейнер
 //re_7gwueaQE_61Q1eRTZuci1as1hGrdt7Z9S
