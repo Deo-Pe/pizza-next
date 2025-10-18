@@ -4,6 +4,8 @@ import { Dialog, DialogContent } from '@/shared/components/ui/dialog'
 import { signIn } from 'next-auth/react'
 import React, { useState } from 'react'
 import LoginForm from './forms/login-form'
+import { DialogTitle } from '@radix-ui/react-dialog'
+import { RegisterForm } from './forms/register-form'
 
 type Props = {
 	open: boolean
@@ -25,9 +27,11 @@ const AuthModal = ({ onClose, open }: Props) => {
 	return (
 		<Dialog open={open} onOpenChange={handleClose}>
 			<DialogContent className='w-[450px] bg-white p-10'>
-				{
-					type === 'login' ? <LoginForm onClose={handleClose} /> : <h1>Register</h1>
-				}
+				<DialogTitle>
+					{
+						type === 'login' ? <LoginForm onClose={handleClose} /> : <RegisterForm onClose={handleClose} />
+					}
+				</DialogTitle>
 				<hr />
 				<div className="flex gap-2">
 					<Button variant={"secondary"}
