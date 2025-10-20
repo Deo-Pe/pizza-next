@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { Api } from "../services/api-client";
+import { Api } from "../components/shared/api-client";
 import { CartStateItem, getCartDetails } from "../services/get-cart-details";
 import { CreateCartItemValues } from "../services/dto/cart.dto";
 

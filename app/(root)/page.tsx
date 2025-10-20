@@ -5,6 +5,7 @@ import { Title } from "@/shared/components/shared/title";
 import TopBar from "@/shared/components/shared/top-bar";
 import { Suspense } from "react";
 import { findPizzas, GetSearchParams } from "@/shared/lib/find-pizzas";
+import Stories from "@/shared/components/shared/stories";
 
 export default async function Home({
   searchParams,
@@ -24,6 +25,7 @@ export default async function Home({
           (category) => category.products.length > 0,
         )}
       />
+      <Stories />
       <Container className="mt-10 pb-14">
         <div className="flex gap-[80px]">
           <div className="w-[250px]">
@@ -52,3 +54,7 @@ export default async function Home({
 // docker run --name dbuser -p 5432:5432 -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=1234 -d postgres собирает контейнер
 //re_7gwueaQE_61Q1eRTZuci1as1hGrdt7Z9S
 //user@test.ru UserqQ 222222 
+
+// https://console.cloud.google.com/apis/dashboard
+// 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 - clientSecret
+// 5355736879-iik6aichbtrjd1o2v64uqj9amoaoouat.apps.googleusercontent.com -- client ID

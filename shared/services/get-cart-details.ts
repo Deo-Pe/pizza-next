@@ -19,7 +19,7 @@ interface ReturnProps {
 }
 
 export const getCartDetails = (data: CartDTO): ReturnProps => {
-    const items = data.items.map((item) => ({
+    const items = data?.items.map((item) => ({
         id: item.id,
         quantity: item.quantity,
         name: item.productItem.product.name,
@@ -32,10 +32,10 @@ export const getCartDetails = (data: CartDTO): ReturnProps => {
             name: ingredient.name,
             price: ingredient.price,
         })),
-    })) as CartStateItem[];
-
+    }));
+    //as CartStateItem[];
     return {
         items,
-        totalAmount: data.totalAmount,
+        totalAmount: data?.totalAmount,
     };
 };
