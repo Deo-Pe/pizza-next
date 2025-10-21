@@ -14,7 +14,7 @@ const eslintConfig = [
     {
         // "jsx-a11y/alt-text": off,
         rules: {
-            "no-unused-vars": off,
+            "no-unused-vars": 0,
         },
     },
 ];
