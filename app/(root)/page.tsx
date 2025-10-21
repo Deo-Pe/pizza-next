@@ -7,10 +7,12 @@ import { Suspense } from "react";
 import { findPizzas, GetSearchParams } from "@/shared/lib/find-pizzas";
 import Stories from "@/shared/components/shared/stories";
 
+type Params = Promise<GetSearchParams>
+
 export default async function Home({
   searchParams,
 }: {
-  searchParams: GetSearchParams;
+  searchParams: Params;
 }) {
   const params = await searchParams;
 
@@ -50,7 +52,7 @@ export default async function Home({
     </>
   );
 }
-// 22.01.23
+// 22.29.23
 // docker run --name dbuser -p 5432:5432 -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=1234 -d postgres собирает контейнер
 //re_7gwueaQE_61Q1eRTZuci1as1hGrdt7Z9S
 //user@test.ru UserqQ 222222 

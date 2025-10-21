@@ -77,22 +77,24 @@ export default function CheckoutPage() {
 	};
 
 
-	return <Container className="mt-10">
-		<Title text="Оформление заказа" className="font-extrabold mb-8 text-[36px]"></Title>
-		<FormProvider {...form}>
-			<form onSubmit={form.handleSubmit(onSubmit)}>
-				<div className="flex gap-10">
-					<div className="flex flex-col gap-10 flex-1 mb-20">
-						<CheckoutCart loading={loading} items={items} onClickCountButton={onClickCountButton} removeCartItem={removeCartItem} />
-						<CheckoutPersonalForm className={loading ? 'opacity-40 pointer-events-none' : ''} />
-						<CheckoutAddressForm className={loading ? 'opacity-40 pointer-events-none' : ''} />
+	return (
+		<Container className="mt-10">
+			<Title text="Оформление заказа" className="font-extrabold mb-8 text-[36px]"></Title>
+			<FormProvider {...form}>
+				<form onSubmit={form.handleSubmit(onSubmit)}>
+					<div className="flex gap-10">
+						<div className="flex flex-col gap-10 flex-1 mb-20">
+							<CheckoutCart loading={loading} items={items} onClickCountButton={onClickCountButton} removeCartItem={removeCartItem} />
+							<CheckoutPersonalForm className={loading ? 'opacity-40 pointer-events-none' : ''} />
+							<CheckoutAddressForm className={loading ? 'opacity-40 pointer-events-none' : ''} />
+						</div>
+						<div className="w-[450px]">
+							<CheckoutSidebar totalAmount={totalAmount} loading={loading || submit} />
+						</div>
 					</div>
-					<div className="w-[450px]">
-						<CheckoutSidebar totalAmount={totalAmount} loading={loading || submit} />
-					</div>
-				</div>
-			</form>
-		</FormProvider>
-	</Container>
+				</form>
+			</FormProvider>
+		</Container>
+	)
 }
 

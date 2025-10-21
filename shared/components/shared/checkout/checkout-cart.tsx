@@ -4,7 +4,7 @@ import { CheckoutItem } from '../checkout-item'
 import { getCartItemDetails } from '@/shared/lib/get-cart-item-details'
 import { PizzaSize, PizzaType } from '@/shared/constants/pizzz'
 import { CartStateItem } from '@/shared/services/get-cart-details'
-import { Skeleton } from '../../ui/skeleton'
+// import { Skeleton } from '../../ui/skeleton'
 import { CheckoutItemSkeleton } from '../checkout-item-skeleton'
 
 type Props = {

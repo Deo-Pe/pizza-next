@@ -6,7 +6,7 @@ import { CartItemDTO } from "@/shared/services/dto/cart.dto";
 import { OrderStatus } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(req: NextRequest, res: NextResponse) {
+export async function POST(req: NextRequest) {
     try {
         const body = (await req.json()) as PaymentCallbackData;
         const order = await prisma.order.findFirst({
