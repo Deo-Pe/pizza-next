@@ -2,8 +2,6 @@ import { prisma } from "@/prisma/prisma-client";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
-    console.log(req);
-
     try {
         const code = req.nextUrl.searchParams.get("code");
         if (!code) {
