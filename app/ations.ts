@@ -8,7 +8,7 @@ import { creatPayment } from "@/shared/lib/create-payment";
 import { getUserSession } from "@/shared/lib/get-user-session";
 import { sendEmail } from "@/shared/lib/send-email";
 import { OrderStatus, Prisma } from "@prisma/client";
-import { hashSync } from "bcrypt";
+import { hashSync } from "bcryptjs";
 import { cookies } from "next/headers";
 
 export async function createOrder(data: CheckoutFormValues) {
