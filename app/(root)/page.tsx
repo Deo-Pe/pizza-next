@@ -52,11 +52,3 @@ export default async function Home({
     </>
   );
 }
-// 22.29.23
-// docker run --name dbuser -p 5432:5432 -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=1234 -d postgres собирает контейнер
-//re_7gwueaQE_61Q1eRTZuci1as1hGrdt7Z9S
-//user@test.ru UserqQ 222222 
-
-// https://console.cloud.google.com/apis/dashboard
-// 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 - clientSecret
-// 5355736879-iik6aichbtrjd1o2v64uqj9amoaoouat.apps.googleusercontent.com -- client ID
